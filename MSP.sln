@@ -21,11 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSP.Mvc", "MSP.Mvc\MSP.Mvc.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.Web", "Spread.Web\Spread.Web.csproj", "{138386C8-10A4-4914-B83F-022C342C3B7C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0A7B73B7-1B7A-4A7A-968C-2FE2BF561198}"
-	ProjectSection(SolutionItems) = preProject
-		Local.testsettings = Local.testsettings
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +67,5 @@ Global
 		{F8523FC9-71E3-4E50-9AC0-F972484753ED} = {94A5B98B-C204-4A75-913C-B159AF5CA9CC}
 		{BB2498B7-AA9A-4AC8-B1EE-01FEE94D1479} = {94A5B98B-C204-4A75-913C-B159AF5CA9CC}
 		{138386C8-10A4-4914-B83F-022C342C3B7C} = {A0391277-E731-46A6-8405-22629AFAD91C}
-		{0A7B73B7-1B7A-4A7A-968C-2FE2BF561198} = {A0391277-E731-46A6-8405-22629AFAD91C}
 	EndGlobalSection
 EndGlobal

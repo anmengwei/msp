@@ -7,59 +7,62 @@ var DataTableExt={
             var data = $(this).attr("data-field-name");
             columns.push({ "data": data});
         });
-        //处理参数
-        var getParams = function (d) {
-            var start = d["start"];
-            var length = d["length"] <= 0 ? 50 : d["length"];
-            var PageIndex = start % length > 0 ? (start / length + 1) : (start / length);
-            d.PageSize = length;
-            d.PageIndex = PageIndex;
-            delete d.order;
-            delete d.columns;
-            delete d.search;
-            return d;
-        };
-
-        //语言
-        var language = options.language || {
-            "info": "显示 _START_ 到 _END_ 共 _TOTAL_ 记录",
-            "infoEmpty": "无数据",
-            "infoFiltered": "(filtered1 from _MAX_ total records)",
-            "lengthMenu": "每页显示 _MENU_",
-            "search": "搜索:",
-            "zeroRecords": "未查询到数据",
-            "paginate": {
-                "next": "下一页",
-                "previous": "上一页",
-                "first": "首页",
-                "last": "末页"
-            }
-        };
-
         //DataTable参数设置
-        var dtOptions = {
+        var dtoption = {
             "bStateSave": true,
             "processing": true,
             "serverSide": true,
-            "deferRender": true,
-            "processing": true,
+            "searching": false,
+            "language": {
+                "aria": {
+                    "sortAscending": ": activate to sort column ascending",
+                    "sortDescending": ": activate to sort column descending"
+                },
+                "processing": "加载中...",
+                "emptyTable": "无数据",
+                "info": "显示 _START_ 到 _END_ 共 _TOTAL_ 条记录",
+                "infoEmpty": "No records found",
+                "infoFiltered": "(filtered1 from _MAX_ total records)",
+                "lengthMenu": "每页显示 _MENU_",
+                "search": "搜索:",
+                "zeroRecords": "No matching records found",
+                "paginate": {
+                    "previous": "上一页",
+                    "next": "下一页",
+                    "last": "最后页",
+                    "first": "第一页"
+                }
+            },
             "ajax": {
-                "url": options.searchUrl,
-                "data": function (d) { return getParams(d); },
+                "url": options.url,
+                "data": function (d) {
+                    var start = d["start"];
+                    var length = d["length"] <= 0 ? 50 : d["length"];
+                    var PageIndex = start % length > 0 ? (start / length + 1) : (start / length);
+                    d.PageSize = length;
+                    d.PageIndex = PageIndex;
+                    delete d.order;
+                    delete d.columns;
+                    delete d.search;
+                    return d;
+                },
                 "type": "post"
             },
-            "sScrollY": "auto",
-            "language": language,
-            "bScrollCollapse": false,
             "columns": columns,
-            "createdRow": function (nRow, aData, iDataIndex) {
-                var id = aData[options.primaryId];
-                $(nRow).find(".bind-data-id").val(id).attr("data-id", id);
-                if (options.fnCreateRow) {
-                    options.fnCreateRow(nRow, aData, iDataIndex);
-                }
-            }
-        };
-        return options.tableObj.DataTable(dtOptions);
+            "columnDefs": [{
+                "targets": 0,
+                "orderable": false,
+                "searchable": false
+            }],
+            "lengthMenu": [
+                [5, 20, 50, 100],
+                [5, 20, 50, 100] // change per page values here
+            ],
+            // set the initial value
+            "pageLength": 5,
+            "pagingType": "bootstrap_full_number"
+        }
+        
+        return options.tableObj.DataTable(dtoption);
     }
 };

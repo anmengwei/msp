@@ -28,12 +28,21 @@ namespace Spread.Web.Controllers.Managed
             return View("~/Views/Managed/WeChat/Index.cshtml");
         }
 
+        [Route("init")]
+        public ActionResult Inint()
+        {
+            for (int i = 1; i < 1001; i++)
+            {
+                this._WeChatService.InsertAndGetId(new WeChat { AppId = "AppId" + i, AppSecret = "AppSecret" + i, EncodingAESkey = "EncodingAESkey" + i, Name = "Name" + i, Token = "Token" + i, Url = "Url" + i });
+            }
+            return Content("数据初始化完成!");
+        }
         /// <summary>
         /// 微信账号列表数据
         /// </summary>
         /// <returns></returns>
         [Route("Search")]
-        public ActionResult Search(int draw, int PageIndex,int PageSize)
+        public ActionResult Search(int draw,int PageIndex,int PageSize)
         {
             var res = this._WeChatService.PageList(null, PageIndex, PageSize);
             var returnData = new
