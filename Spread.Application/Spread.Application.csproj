@@ -43,8 +43,6 @@
     <Compile Include="ApplicationModule.cs" />
     <Compile Include="IServiceBase.cs" />
     <Compile Include="ServiceBase.cs" />
-    <Compile Include="User\AccountService.cs" />
-    <Compile Include="User\IAccountService.cs" />
     <Compile Include="Wx\IWeChatService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wx\WeChatService.cs" />

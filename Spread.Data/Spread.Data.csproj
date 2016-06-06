@@ -52,8 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mappings\Org\TenantMap.cs" />
-    <Compile Include="Mappings\User\AccountMap.cs" />
     <Compile Include="Mappings\Wx\WeChatMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpreadDataModule.cs" />
